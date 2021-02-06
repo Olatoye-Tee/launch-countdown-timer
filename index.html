@@ -1,31 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Launch countdown timer</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-  We're launching soon
-
-  Days
-  Hours
-  Minutes
-  Seconds
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <link rel="stylesheet" href="css/style.min.css">
+    <title>Frontend Mentor | Launch countdown timer</title>
+  </head>
+  <body>
+    <section class="launch">
+      <h2 class="launch__heading">We're launching soon</h2>
+      <div class="launch__countdown-container">
+        <div class="card-box card-box--d">
+          <div class="card__full card__full--d">
+            <div id="value__full--d" class="value__full value__full--d"></div>
+          </div>
+          <div id="card__half--d" class="card__half card__half--d">
+            <div id="value__half--d" class="value__half value__half--d"></div>
+          </div>
+          <div class="card-box__title">days</div>
+        </div>
+        <div class="card-box card-box--h">
+          <div class="card__full card__full--h">
+            <div id="value__full--h" class="value__full value__full--h"></div>
+          </div>
+          <div id="card__half--h" class="card__half card__half--h">
+            <div id="value__half--h" class="value__half value__half--h"></div>
+          </div>
+          <div class="card-box__title">hours</div>
+        </div>
+        <div class="card-box card-box--m">
+          <div class="card__full card__full--m">
+            <div id="value__full--m" class="value__full value__full--m"></div>
+          </div>
+          <div id="card__half--m" class="card__half card__half--m">
+            <div id="value__half--m" class="value__half value__half--m"></div>
+          </div>
+          <div class="card-box__title">minutes</div>
+        </div>
+        <div class="card-box card-box--s">
+          <div class="card__full card__full--s">
+            <div id="value__full--s" class="value__full value__full--s"></div>
+          </div>
+          <div id="card__half--s" class="card__half card__half--s">
+            <div id="value__half--s" class="value__half value__half--s"></div>
+          </div>
+          <div class="card-box__title">seconds</div>
+        </div>
+      </div>
+      <div class="icons">
+        <img
+          src="images/icon-facebook.svg"
+          id="fb"
+          class="fb icon"
+          alt="facebook icon"
+        />
+        <img
+          src="images/icon-pinterest.svg"
+          id="pin"
+          class="pin icon"
+          alt="pinterest icon"
+        />
+        <img
+          src="images/icon-instagram.svg"
+          id="insta"
+          class="insta icon"
+          alt="instagram icon"
+        />
+      </div>
+    </section>
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Olatoye-Tee</a>.
+    </footer>
+    <script src="index.js"></script>
+  </body>
 </html>

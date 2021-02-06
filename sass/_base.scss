@@ -1,0 +1,408 @@
+:root{
+    //Primary Colors
+    --color-grayish-blue: hsl(237, 18%, 59%);
+    --color-soft-red: hsl(345, 95%, 68%);
+
+    //Secondary Colors
+    --color-white: hsl(0, 0%, 100%);
+    --color-dark-desaturated-blue: hsl(236, 21%, 26%);
+    --color-very-dark-blue: hsl(235, 16%, 14%);
+    --color-very-very-dark-blue: hsl(234, 17%, 12%);
+    --color-for-full-card: hsl(235, 24%, 21%);
+}
+
+//kindly note that the 
+//--d means day
+//--h means hour
+//--m means minutes
+//--s means seconds
+
+//Breakpoints
+$mobile-breakpoint: 23.4375em; //375px
+$mobile-breakpoint-2: 23.375em; //375px
+$tablet-breakpoint: 37.5em; //600px
+$desktop-breakpoint: 90em; //1440px
+
+//////////////////////////Media Queries////////////////////////
+//media query --1
+@mixin for-phone-to-tablet {
+    @media screen and (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+//media query --2
+@mixin for-phone-downwards {
+    @media screen and (max-width: $mobile-breakpoint-2) {
+        @content;
+    }
+}
+
+
+//Font family
+$font-family: 'Red Hat Text', sans-serif;
+
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; //1rem = 10px
+    height: 100vh;
+}
+
+//Universal Reset//
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+body{
+    height: 100%;
+    background: url(../images/pattern-hills.svg) bottom no-repeat, 
+                url(../images/bg-stars.svg) center repeat;
+    background-color: var(--color-very-dark-blue);
+    font-size: 1.4rem;
+
+    //Flex settings
+    display: flex;
+    flex-direction: column;
+
+    //Text settings
+    font-family: $font-family;
+    letter-spacing: .2em;
+}
+
+.launch{
+    min-height: auto;
+    text-transform: uppercase;
+
+    //Text//
+    color: var(--color-white);
+
+    //Inherited Flex settings
+    flex: 1 0 auto;
+
+    //Flex settings
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    &__heading{
+        text-align: center;
+        color: var(--color-white);
+        font-size: 2rem;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+        width: 60%;
+        font-size: 1.8rem;
+      }
+
+       //Media Queries --2
+       @include for-phone-downwards {
+        width: 70%;
+        font-size: 1.6rem;
+      }
+    }
+
+    &__countdown-container{
+        display: flex;
+
+        > :not(:last-child){
+            margin-right: 2rem;
+        }
+    }
+}
+
+/////////Card settings//////////////
+.card-box{
+    height: 13rem; //The extra for the text (3rem)
+    width: 10rem;
+    position: relative;
+    perspective: 200px; //important for flip animation
+    transform-style: preserve-3d; //important for flip animation
+
+    //Media Queries --1
+    @include for-phone-to-tablet {
+        height: 10rem; //the extra for the text (3rem)
+        width: 7rem;
+    }
+
+    //Media Queries --2
+    @include for-phone-downwards {
+     height: 7rem; //the extra for the text (2rem)
+     width: 5rem;   
+    }
+
+    &__title{
+        color: var(--color-grayish-blue);
+        font-size: 1.3rem;
+
+        //positioning
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+         font-size: 1rem;
+         letter-spacing: .1em;  
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+        font-size: .75rem;
+        }
+    }
+}
+
+.card{
+    &__full{
+        background-color: var(--color-for-full-card);
+        border-radius: 8px;
+        height: 10rem;
+        width: 10rem;
+        box-shadow: 0 5px 2px 0 var(--color-very-very-dark-blue);
+
+        //positioning
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        
+        //Media Queries --1
+        @include for-phone-to-tablet {
+         height: 7rem;
+         width: 7rem;
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+         height: 5rem;
+         width: 5rem;
+        }
+        
+        &::before,
+        &::after{
+            display: block;
+            content: '';
+            background-color: var(--color-very-very-dark-blue);
+            width: 7px;
+            height: 14px;
+
+            //positioning
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            //Media Queries --1
+            @include for-phone-to-tablet {
+             width: 4px; 
+             height: 8px;
+            }
+
+           //Media Queries --2
+           @include for-phone-downwards {
+             width: 2px;
+             height: 4px; 
+           }
+        }
+
+        &::before{
+            left: 0;
+            border-radius: 0 100% 100% 0;
+        }
+        &::after{
+            right: 0;
+            border-radius: 100% 0 0 100%;
+        }
+    }
+    &__half{
+        border-top: 1px solid var(--color-very-dark-blue);
+        background-color: var(--color-dark-desaturated-blue);
+        border-radius: 0 0 8px 8px;
+        height: 5rem;
+        width: 10rem;
+
+        //positioning
+        position: absolute;
+        top: 38.46153864%; //approximately 5rem which is half of the full card.
+        z-index: 2;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+         width: 7rem;
+         height: 3.5rem;
+
+         //positioning
+         top: 35%;
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+           width: 5rem;
+           height: 2.5rem;
+
+           //positioning
+           top: 35.71428571%; //value gotten by dividing half of width by height 
+        }
+
+
+
+        &::before,
+        &::after{
+            display: block;
+            content: '';
+            background-color: var(--color-very-very-dark-blue);
+            width: 7px;
+            height: 14px;
+
+            //positioning
+            position: absolute;
+            top: 0;
+            transform: translateY(-50%);
+
+            //Media Queries -1
+            @include for-phone-to-tablet {
+              width: 4px;
+              height: 8px;
+            }
+
+            //Media Queries --2
+            @include for-phone-downwards {
+             width: 2px;
+             height: 4px;        
+           }
+
+
+        }
+
+        &::before{
+            left: 0;
+            border-radius: 0 100% 100% 0;
+        }
+        &::after{
+            right: 0;
+            border-radius: 100% 0 0 100%;
+        }
+    }
+}
+
+.value{
+    &__full{
+        color: var(--color-soft-red);
+        font-size: 6rem;
+
+        //positioning
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        //Media Queries --1
+          @include for-phone-to-tablet {
+        font-size: 3rem;
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+        font-size: 1.8rem;
+        }
+
+
+    }
+    &__half{
+        color: var(--color-soft-red);
+        font-size: 6rem;
+
+        //positioning
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%,-50%);
+          
+        //Media Queries --1
+          @include for-phone-to-tablet {
+        font-size: 3rem;
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+        font-size: 1.8rem;
+        }
+
+
+    }
+}
+
+//////////Icons/////////////////
+.icons{
+    > :not(:last-child){
+        margin-right: 2rem;
+    }
+}
+
+.icon{
+    //Media Queries --2
+    @include for-phone-downwards {
+     height: 1.5rem;   
+    }
+
+    &:hover{ 
+        //improvision needed for color-soft-red
+        filter: invert(0.26) sepia(1) saturate(4.4) hue-rotate(284.4deg) brightness(1);
+        cursor: pointer;
+    }
+}
+
+/////////Footer//////////////
+.attribution{
+    text-align: center;
+    color: var(--color-white);
+    align-self: center;
+
+    //Media Queries --1
+    @include for-phone-to-tablet {
+     font-size: .85rem;    
+    }
+
+    //Media Queries --2
+    @include for-phone-downwards {
+     width: 80%;
+     font-size: .75rem;   
+    }
+
+    a{
+        color: var(--color-soft-red);
+    }
+}
+
+///////////////////Animation Settings/////////////////
+/*Animate class for the css and js*/
+.animateSeconds{
+    /*Card flip animation being applied*/
+    animation: flipCard 1s ease infinite; 
+}
+
+
+///*Defining card flip animation parameters*/////
+@keyframes flipCard{
+    0%{
+        transform: rotateX(-210deg);
+        transform-origin: top;
+        opacity: 0;
+    }
+    100%{
+        transform: rotateX(-360deg);
+        transform-origin: top;
+        opacity: 1;
+    }
+    100%{
+        transform: rotateX(-360deg);
+        transform-origin: top;
+    }
+}
+
