@@ -1,0 +1,348 @@
+.countdown-day,
+.countdown-hour,
+.countdown-minute,
+.countdown-second{
+    &__box{
+        height: 10rem;
+        width: 10rem;
+        
+        display: flex;
+        perspective: 1000px;
+
+        position: relative;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+            height: 7rem;
+            width: 7rem;
+        }
+    
+        //Media Queries --2
+        @include for-phone-downwards {
+         height: 5rem;
+         width: 5rem;   
+        }    
+    }
+    
+    &__title{
+        color: var(--color-grayish-blue);
+        font-size: 1.3rem;
+        text-align: center;
+        margin-top: 2rem;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+         font-size: 1rem;
+         letter-spacing: .1em;  
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+        font-size: .75rem;
+        }
+    }
+}
+
+%front-pseudoelement{ //////Pseudoelements
+    &::before,
+    &::after{
+        display: block;
+        content: '';
+        background-color: var(--color-very-very-dark-blue);
+        width: 4px;
+        height: 8px;
+
+        //positioning
+        position: absolute;
+        bottom: 0;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+         width: 3px; 
+         height: 6px;
+        }
+
+       //Media Queries --2
+       @include for-phone-downwards {
+         width: 2px;
+         height: 4px; 
+       }
+    }
+
+    &::before{
+        left: 0;
+        border-radius: 0 100% 0 0;
+    }
+    &::after{
+        right: 0;
+        border-radius: 100% 0 0 0;
+    }
+
+}
+
+%bottom-pseudoelement{ ////Pseudoelements
+&::before,
+&::after{
+    display: block;
+    content: '';
+    background-color: var(--color-very-very-dark-blue);
+    width: 4px;
+    height: 8px;
+
+    //positioning
+    position: absolute;
+    top: 0;
+
+    //Media Queries -1
+    @include for-phone-to-tablet {
+      width: 3px;
+      height: 6px;
+    }
+
+    //Media Queries --2
+    @include for-phone-downwards {
+     width: 2px;
+     height: 4px;        
+   }
+
+
+}
+
+&::before{
+    left: 0;
+    border-radius: 0 0 100% 0;
+}
+&::after{
+    right: 0;
+    border-radius: 0 0 0 100%;
+}
+
+}
+
+
+.flip{
+        border-radius: 8px 8px 0px 0px;
+        height: 5rem;
+        width: 10rem;
+        
+        //animation settings
+        z-index: 1;
+
+        //for animation
+        transform: rotateX(-90deg);
+        transform-origin: bottom;
+
+        //positioning
+        position: absolute;
+
+        //for 3d flip effect
+        transform-style: preserve-3d;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+         height: 3.5rem;
+         width: 7rem;
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+         height: 2.5rem;
+         width: 5rem;
+        }
+        
+        @extend %front-pseudoelement;
+
+    &__card-front{
+        background-color: var(--color-for-top-card);
+        border-radius: 8px 8px 0px 0px;
+        height: 100%;
+        width:  100%;
+
+        backface-visibility: hidden;
+        overflow: hidden;
+
+        //positioning
+        position: absolute;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+         height: 3.5rem;
+         width: 7rem;
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+         height: 2.5rem;
+         width: 5rem;
+        }
+        
+
+        @extend %front-pseudoelement
+    }
+    
+    &__card-back {
+
+            background-color: var(--color-dark-desaturated-blue);
+            border-radius: 0 0 8px 8px;
+            height: 100%;
+            width: 100%;
+
+            backface-visibility: hidden;
+            overflow: hidden;
+    
+            //positioning
+            position: absolute;
+
+            //for rotation
+            transform: rotateX(-180deg);
+    
+            //Media Queries --1
+            @include for-phone-to-tablet {
+                height: 3.5rem;
+                width: 7rem;
+            }
+    
+            //Media Queries --2
+            @include for-phone-downwards {
+                height: 2.5rem;
+                width: 5rem;
+            }
+    
+            @extend %bottom-pseudoelement;
+            
+    }
+}
+
+.value-fcfDay,
+.value-fcfHour,
+.value-fcfMinute,
+.value-fcfSecond,
+.value-sctDay,
+.value-sctHour,
+.value-sctMinute,
+.value-sctSecond{
+    color: var(--color-soft-red);
+    font-size: 6rem;
+
+    //positioning
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+
+    //Media Queries --1
+      @include for-phone-to-tablet {
+    font-size: 3rem;
+    }
+
+    //Media Queries --2
+    @include for-phone-downwards {
+    font-size: 1.8rem;
+    }
+}
+
+.value-fcbDay,
+.value-fcbHour,
+.value-fcbMinute,
+.value-fcbSecond,
+.value-scbDay,
+.value-scbHour,
+.value-scbMinute,
+.value-scbSecond{
+    color: var(--color-soft-red);
+    font-size: 6rem;  
+
+    //positioning
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+      
+    //Media Queries --1
+      @include for-phone-to-tablet {
+    font-size: 3rem;
+    }
+
+    //Media Queries --2
+    @include for-phone-downwards {
+    font-size: 1.8rem;
+    }
+}
+
+.stagnant{
+    height: 10rem;
+    width: 10rem;
+
+    position: absolute;
+
+    //Media Queries --1
+    @include for-phone-to-tablet {
+     height: 7rem;
+     width: 7rem;
+    }
+       
+    //Media Queries --2
+    @include for-phone-downwards {
+     height: 5rem;
+     width: 5rem;
+    }
+
+    &__card-top{
+        
+        background-color: var(--color-for-top-card);
+        border-radius: 8px 8px 0px 0px;
+        height: 5rem;
+        width: 10rem;
+
+        backface-visibility: hidden;
+        overflow: hidden;
+
+        //positioning
+        position: relative;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+         height: 3.5rem;
+         width: 7rem;
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+         height: 2.5rem;
+         width: 5rem;
+        } 
+
+        @extend %front-pseudoelement;
+
+    }
+    &__card-bottom {
+        
+        border-top: 1px solid var(--color-very-dark-blue);
+        background-color: var(--color-dark-desaturated-blue);
+        box-shadow: 0px 5px 0 0 var(--color-very-very-dark-blue);
+        border-radius: 0 0 8px 8px;
+        height: 5rem;
+        width: 10rem;
+        
+        backface-visibility: hidden;
+        overflow: hidden;
+         
+        //positioning
+        position: relative;
+
+        //Media Queries --1
+        @include for-phone-to-tablet {
+            height: 3.5rem;
+            width: 7rem;
+        }
+
+        //Media Queries --2
+        @include for-phone-downwards {
+            height: 2.5rem;
+            width: 5rem;
+        }
+
+        @extend %bottom-pseudoelement;
+    
+    }
+}

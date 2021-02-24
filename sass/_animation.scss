@@ -1,0 +1,73 @@
+/////////////////////////ANIMATION SETTINGS//////////////////////////////
+.animate{
+    animation: flip 1s ease-out infinite;
+}
+
+.animateSA{
+    //animation settings
+    animation: fadeST 1s ease-out infinite; 
+}
+
+.animateSB{
+    //animation settings
+    animation: fadeSB 1s ease-out infinite; 
+}
+
+
+
+//////////////////////Animation settings/////////////////////
+
+
+@keyframes flip{
+    0%{
+        transform: rotateX(0deg);
+        transform-origin: bottom;
+    }
+    50%{
+        transform: rotateX(-90deg);
+        transform-origin: bottom;
+    }
+    100%{
+        transform: rotateX(-180deg);
+        transform-origin: bottom;
+    }
+}
+
+
+@keyframes fadeST{
+    0%{
+        color: var(--color-soft-red);
+    }
+    25%{
+        color: transparent;
+    }
+    75%{
+        color: var(--color-soft-red);
+    }
+    100%{
+        color: var(--color-soft-red);
+    }
+}
+
+@keyframes fadeSB{
+    0%{
+        color: var(--color-soft-red);
+    }
+    20%{
+        color: var(--color-soft-red);
+    }
+    50%{
+        color: transparent;
+    }
+    75%{
+        color: transparent;
+    }
+    100%{
+        color: transparent;
+    }
+}
+
+//The fade must take a longer distance than the flip
+// So that it won't show until flip has occured
+//hence the extra percentage counts
+
